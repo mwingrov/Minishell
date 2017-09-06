@@ -6,7 +6,7 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 11:45:06 by ckatz             #+#    #+#             */
-/*   Updated: 2017/08/17 14:44:12 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/09/06 18:39:33 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 void		check_input(char **args)
 {
 	if (ft_strcmp(args[0], "echo") == 0)
-		ft_putstr("echo works\n");
+		ft_strsplit(echo(&args[1]), ' ');
 	else if (ft_strcmp(args[0], "cd") == 0)
 		ft_putstr("directory changed\n");
 	else	

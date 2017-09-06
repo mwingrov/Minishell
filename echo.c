@@ -6,37 +6,26 @@
 /*   By: mwingrov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/17 15:27:56 by mwingrov          #+#    #+#             */
-/*   Updated: 2017/08/17 17:49:35 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/09/06 18:41:22 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "minishell.h"
 
-void	ft_putstr(const char *str)
-{
-	while(*str && write(1, str++, 1));
-}
-
-int	main(int ac, char **av)
+char	*echo(char **av)
 {
 	int	i;
 
-	i = 1;
-	if (ac > 1)
+	i = 0;
+	while (av[0][i])
 	{
-		while (av[i])
+		if (av[0][i] == '*')
 		{
-			if (av[1][i] == '*')
-			{
-				ft_putendl(ft_strjoin("zsh: no matches found: ", &av[1][i]));
-				ft_putstr(av[i++]);
-			}
-			ft_putstr(av[i++]);
-			ft_putstr(" ");
+			ft_putendl(ft_strjoin("zsh: no matches found: ", &av[0][i++]));
+			ft_putchar(av[0][i++]);
 		}
-		ft_putstr("\n");
+		ft_putchar(av[0][i++]);
 	}
-	return (0);
+	ft_putstr("\n");
+	return (*av);
 }
