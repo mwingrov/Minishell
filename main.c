@@ -6,12 +6,12 @@
 /*   By: ckatz <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 11:45:06 by ckatz             #+#    #+#             */
-/*   Updated: 2017/09/07 09:44:10 by mwingrov         ###   ########.fr       */
+/*   Updated: 2017/09/21 18:53:44 by mwingrov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
+#include <stdio.h>
 /*
  ** 1: Initialse shell
  ** 2: Read arguements from std::in using get_next_line
@@ -25,41 +25,7 @@
  **
  */
 
-void		check_input(char **args)
+int			main(int argc, char **argv)
 {
-	int	i;
-
-	i = 1;
-	if (ft_strcmp(args[0], "echo") == 0)
-		echo(&args[i++]);
-	else if (ft_strcmp(args[0], "cd") == 0)
-		ft_putstr("directory changed\n");
-	else	
-		ft_putendl(ft_strjoin("zsh: command not found: ", args[0]));
-}
-
-void		read_line(char **args, int num_args)
-{
-	char	*line;
-		
-	if (get_next_line(0, &line) == 1)
-	{	
-		if (num_args > 0)
-		{ 
-			args = ft_strsplit(line, ' ');
-			check_input(args);	
-		}
-		free(args);
-	}
-}
-
-int			main(int argc, char **argv, char **env)
-{	
-
-	while (1)
-	{
-		ft_putstr("=> ");
-		read_line(argv, argc);
-	}
 	return (0);
 }
